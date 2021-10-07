@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="pop-up.css">
+</head>
+
+<body>
+    <!-- popup starts here -->
+    <!-- Trigger/Open The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" >&times;</span>
+
+            <h1 class="main-head">Your account has been successfully created</h1><hr>
+            <h3 onclick="getDetails()">Review your details....</h3>
+            <div class="details">
+                <h2>Full Name :</h2> <h2 class="user-input"></h2>
+            </div>
+            <div class="details">
+                <h2>Email :</h2> <h2 class="user-input"></h2>
+            </div>
+            <div class="details">
+                <h2>Password : </h2> <h2 class="user-input"></h2>
+            </div>
+            <div class="hint-text">Already have an account? <a href="login.html">Login here</a></div>
+        </div>
+
+    </div>
+    <!-- popup for after submission end -->
+</body>
+<script src="popup.js"></script>
+
+</html>

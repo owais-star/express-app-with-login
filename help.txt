@@ -1,0 +1,161 @@
+//for post creation
+
+app.post("/create" ,(request,response)=>{
+    try {
+        const body = request.body
+        constructor.post.create(body, (error , data)=>{
+            if(error){
+                throw error;
+            }else{
+                console.log(data)
+                response.send("Created post succesfully")
+            }
+        });
+    } catch (error) {
+        response.send(`got an error` , error.message);
+    }
+});
+//for sign up page
+
+app.post("/signup" ,(request,response)=>{
+    try {
+        const body = request.body
+        constructor.email.create(body, (error , data)=>{
+            if(error){
+                throw error;
+            }else{
+                console.log(data)
+                response.send("Created your account succesfully")
+            }
+        });
+    } catch (error) {
+        response.send(`got an error` , error.message);
+    }
+});
+
+//for getting posts from database
+
+app.get("/posts", (req, res)=>{
+    try {
+        const {title} = req.headers;
+        const query = {};
+        if (title) {
+            query.title = title;
+        }
+        postModel.find(query, (error, data)=>{
+            if (error) {
+                throw error;
+            } else {
+                res.send(JSON.stringify(data));
+            }
+        });
+
+    } catch (error) {
+        res.send(`got an error during get post ${error.message}`);
+    }
+});
+
+//for getting email from database
+
+app.get("/getemail", (request, response)=>{
+    try {
+        const {email} = request.headers;
+        const query = {
+            email
+        };
+        if (email) {
+            query.emaill = email;
+        
+        constructor.email.findOne(query, (error, data)=>{
+            if (error) {
+                throw error;
+            } else {
+                response.send(JSON.stringify(data));
+            }
+        });
+        }else{
+            response.send(`No account found with this email, signup now`)
+        }
+
+    } catch (error) {
+        response.send(`got an error during get post ${error.message}`);
+    }
+});
+
+
+//for posting your post data to the database
+
+var title = document.getElementById('title').value;
+var titlePost = document.getElementById('titlePost').value;
+
+    let obj = {
+        title: title,
+        description: titlePost,
+    }
+    if (title && titlePost != '') {
+
+        axios.post(`${BASE_URL}/create`, obj)
+            .then((response) => {
+                console.log(response);
+            }).catch((err) => {
+                console.log(err);
+            });
+    }
+
+//for getting your data from the database
+
+let getPost = () => { 
+    axios.get(`${BASE_URL}/posts`)
+        .then((response) => {
+            console.log(response.data);
+            response.data.forEach(element => {
+                //  put your data from database here
+                <h3 id="sharedTitle">${element.title}</h3>
+                <p id="sharedTitlePost">${element.description}</p>
+            })
+        .catch((err) => {
+            console.log(err);
+        });
+}
+
+document.addEventListener("load", getPost());
+
+// for signup
+
+var email = document.getElementById('email').value;
+var password = document.getElementById('password').value;
+
+    let obj = {
+        email: email,
+        password: password,
+    }
+    if (email && password != '') {
+
+        axios.post(`${BASE_URL}/signup`, obj)
+            .then((response) => {
+                console.log(response);
+            }).catch((err) => {
+                console.log(err);
+            });
+    }
+
+//for login
+
+var email = document.getElementById('email').value;
+var password = document.getElementById('password').value;
+
+let signin = () => { 
+    axios.get(`${BASE_URL}/getemail`)
+        .then((response) => {
+            console.log(response.data);
+            response.data.forEach(element => {
+                //  put your data from database here
+                if(email === element.email){
+                    alert("you have succesfully logged in")
+                    window.location.href = dashboad.html;
+                }
+            })
+        .catch((err) => {
+            console.log(err);
+        });
+}

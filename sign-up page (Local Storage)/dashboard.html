@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <title>Document</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <section class="showcase">
+        <header>
+            <div class="toggle"></div>
+            <h2 class="logo" onclick="logOut()">Logout</h2>
+        </header>
+        <div class="postArea">
+            <input type="text" placeholder="Title Name" id="title">
+            <input type="text" placeholder="What's in Your Mind" id="titlePost">
+            <button class="btn" id="postBtn" onclick="postShare()">Post</button>
+             <ul class="" id="callPosts"></ul>
+            <!--<li>
+                    <div class="userData">
+                        <img width="7%" src="" alt="">
+                        <div>
+                            <div class="userName"><h2 id="userName"></h2></div>
+                            <div class="dateNtime" id="dateNtime"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div class="title">
+                            <h3 id="sharedTitle"></h3>
+                            <p id="sharedTitlePost"></p>
+                        </div>
+                        <img id="postImage" width="100%" src="" alt="">
+                    </div>
+                </li>
+            </ul>
+            <ul class="posts">
+                <li>
+                    <div class="userData">
+                        <img width="7%" src="user.png" alt="">
+                        <div>
+                            <div class="userName"><h2 id="userName">Name</h2></div>
+                            <div class="dateNtime" id="dateNtime">Date and Time</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="div">
+                        <div class="title">
+                            <h3 id="sharedTitle">TITLE</h3>
+                            <p id="sharedTitlePost">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem consequuntur pariatur explicabo quidem ab accusantium ipsum molestiae beatae fuga dolores.</p>
+                        </div>
+                        <img width="100%" src="https://source.unsplash.com/user/erondu/600x400" alt="">
+                    </div>
+                </li>
+            </ul> -->
+        </div>
+
+        
+    </section>
+    <div class="menu">
+        <img width="50%" src="user.png" alt="">
+        <ul>
+            <li><h4 id="dashBoardName">abc</h4></li>
+            <li><i class="far fa-map"></i><h5 id="dashBoardAddress">xyz</h5></li>
+            <li><i class="far fa-envelope"></i><h5 id="dashBoardEmail">xyz</h5></li>
+            <li><i class="fas fa-phone-alt"></i><h5 id="dashBoardPhone">xyz</h5></li>
+        </ul>
+    </div>
+
+
+
+    <script src="app.js"></script>
+    <script>
+        const menuToggle = document.querySelector('.toggle')
+        const showcase = document.querySelector('.showcase')
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active')
+            showcase.classList.toggle('active')
+        })
+    </script>
+
+
+
+
+</body>
+<script src="dashboard.js"></script>
+</html>
