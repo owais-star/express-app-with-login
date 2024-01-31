@@ -12,7 +12,12 @@ app.use(cors());
 app.post("/callback", (request, response) => {
   try {
     const body = request.body;
-    console.log(body);
+
+    for (let b of body) {
+      console.dir(b.tokenTransfers, { depth: null });
+      console.dir(b.description, { depth: null });
+    }
+
     return response.status(200).json({
       status: "success",
       message: "callback received",
